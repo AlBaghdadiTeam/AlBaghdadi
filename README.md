@@ -9,7 +9,7 @@
 
 # <p align="center"> كود تنصيب السورس ⌯︙
 
- # <p align="center" style="color:#cb3349" > ``git clone https://github.com/ALSH1/AlBaghdadi.git ;cd AlBaghdadi;chmod +x install;./install``
+ # <p align="center" style="color:#cb3349" > ``git clone https://github.com/AlBaghdadiTeam/AlBaghdadi.git ;cd AlBaghdadi;chmod +x install;./install``
 
 # <p align="center"> بعد انتهاء عمليه تثبيت السورس ⌯︙
 
