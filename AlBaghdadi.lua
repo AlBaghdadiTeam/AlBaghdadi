@@ -5,7 +5,6 @@ json = dofile("./library/JSON.lua")
 JSON  = dofile("./library/dkjson.lua")
 URL = require('socket.url')  
 utf8 = require ('lua-utf8') 
-
 database = redis.connect('127.0.0.1', 6379) 
 id_server = io.popen("echo $SSH_CLIENT | awk '{ print $1}'"):read('*a')
 --------------------------------------------------------------------------------------------------------------
@@ -1005,7 +1004,7 @@ end
 
 if text == 'تحديث السورس •' and SudoBot(msg) then 
 os.execute('rm -rf AlBaghdadi.lua')
-os.execute('wget https://raw.githubusercontent.com/ALSH1/AlBaghdadi/main/AlBaghdadi.lua')
+os.execute('wget https://raw.githubusercontent.com/AlBaghdadiTeam/AlBaghdadi/main/AlBaghdadi.lua')
 send(msg.chat_id_, msg.id_,' ● تم تحديث السورس \n ● لديك اخر اصدار لسورس البغدادي\n ● الاصدار » { 1.3v}')
 dofile('AlBaghdadi.lua')  
 end
