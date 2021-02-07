@@ -1,78 +1,105 @@
 redis = require('redis') 
-httpB= require ("ssl.https") 
+https = require ("ssl.https") 
 serpent = dofile("./library/serpent.lua") 
 json = dofile("./library/JSON.lua") 
 JSON  = dofile("./library/dkjson.lua")
 URL = require('socket.url')  
 utf8 = require ('lua-utf8') 
 database = redis.connect('127.0.0.1', 6379) 
-Server_AlBaghdadi = io.popen("echo $SSH_CLIENT | awk '{ print $1}'"):read('*a')
-------------------------------------------------------------------------------------------------------------
-local function Load_File()
-local f = io.open("./Info_Sudo.lua", "r")  
-if not f then   
-if not redis:get(Server_AlBaghdadi.."Token_DevAlBaghdadi") then
-io.write('\n\27[1;35m⌔︙Send Token For Bot : ارسل توكن البوت ...\n\27[0;39;49m')
+id_server = io.popen("echo $SSH_CLIENT | awk '{ print $1}'"):read('*a')
+--------------------------------------------------------------------------------------------------------------
+local AutoSet = function() 
+local create = function(data, file, uglify)  
+file = io.open(file, "w+")   
+local serialized   
+if not uglify then  
+serialized = serpent.block(data, {comment = false, name = "Info"})  
+else  
+serialized = serpent.dump(data)  
+end    
+file:write(serialized)    
+file:close()  
+end  
+if not database:get(id_server..":token") then
+io.write('\27[0;31m\n ارسل لي توكن البوت الان ↓ :\na┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n\27')
 local token = io.read()
 if token ~= '' then
 local url , res = https.request('https://api.telegram.org/bot'..token..'/getMe')
 if res ~= 200 then
-io.write('\n\27[1;31m⌔︙Token Is Communication Error\n التوكن غلط جرب مره اخره \n\27[0;39;49m')
+print('\27[0;31m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n التوكن غير صحيح تاكد منه ثم ارسله')
 else
-io.write('\n\27[1;31m⌔︙Done Save Token : تم حفظ التوكن \n\27[0;39;49m')
-redis:set(Server_AlBaghdadi.."Token_DevAlBaghdadi",token)
+io.write('\27[0;31m تم حفظ التوكن بنجاح \na┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n27[0;39;49m')
+database:set(id_server..":token",token)
 end 
 else
-io.write('\n\27[1;31m⌔︙Token was not saved \n لم يتم حفظ التوكن \n\27[0;39;49m')
-end 
-os.execute('lua AlBaghdadi.lua')
-end
-------------------------------------------------------------------------------------------------------------
-if not redis:get(Server_AlBaghdadi.."User_DevAlBaghdadi1") then
-io.write('\n\27[1;35m⌔︙Send ID For Sudo : ارسل ايدي المطور الاساسي ...\n\27[0;39;49m')
-local User_Sudo = io.read():gsub('@','')
-if User_Sudo ~= '' then
-io.write('\n\27[1;31m⌔︙The ID Is Saved : تم حفظ ايدي المطور\n\27[0;39;49m')
-redis:set(Server_AlBaghdadi.."Id_DevAlBaghdadi",User_Sudo)
-io.write('\n\27[1;35m⌔︙Send UserName For Sudo : ارسل معرف المطور الاساسي ...\n\27[0;39;49m')
-local User_Sudo2 = io.read():gsub('@','')
-if User_Sudo ~= '' then
-redis:set(Server_AlBaghdadi.."User_DevAlBaghdadi1",User_Sudo2)
-end
-else
-io.write('\n\27[1;31m⌔︙The ID was not Saved : لم يتم حفظ ايدي المطور الاساسي\n\27[0;39;49m')
+print('\27[0;35m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n لم يتم حفظ التوكن ارسل لي التوكن الان')
 end 
 os.execute('lua AlBaghdadi.lua')
 end
-------------------------------------------------------------------------------------------------------------
-local DevAlBaghdadi_Info_Sudo = io.open("Info_Sudo.lua", 'w')
-DevAlBaghdadi_Info_Sudo:write([[
-do 
-local AlBaghdadi_INFO = {
-Id_DevAlBaghdadi = ]]..redis:get(Server_AlBaghdadi.."Id_DevAlBaghdadi")..[[,
-UserName_AlBaghdadi = "]]..redis:get(Server_AlBaghdadi.."User_DevAlBaghdadi1")..[[",
-Token_Bot = "]]..redis:get(Server_AlBaghdadi.."Token_DevAlBaghdadi")..[["
-}
-return AlBaghdadi_INFO
+if not database:get(id_server..":SUDO:ID") then
+io.write('\27[0;35m\n ارسل لي ايدي المطور الاساسي ↓ :\na┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n\27[0;33;49m')
+local SUDOID = io.read()
+if SUDOID ~= '' then
+io.write('\27[1;35m تم حفظ ايدي المطور الاساسي \na┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n27[0;39;49m')
+database:set(id_server..":SUDO:ID",SUDOID)
+else
+print('\27[0;31m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n لم يتم حفظ ايدي المطور الاساسي ارسله مره اخره')
+end 
+os.execute('lua AlBaghdadi.lua')
 end
-
-]])
-DevAlBaghdadi_Info_Sudo:close()
-------------------------------------------------------------------------------------------------------------
-local Run_File_AlBaghdadi = io.open("AlBaghdadi", 'w')
-Run_File_AlBaghdadi:write([[
+if not database:get(id_server..":SUDO:USERNAME") then
+io.write('\27[1;31m ↓ ارسل معرف المطور الاساسي :\n SEND ID FOR SIDO : \27[0;39;49m')
+local SUDOUSERNAME = io.read():gsub('@','')
+if SUDOUSERNAME ~= '' then
+io.write('\n\27[1;34m تم حفظ معرف المطور :\n\27[0;39;49m')
+database:set(id_server..":SUDO:USERNAME",'@'..SUDOUSERNAME)
+else
+print('\n\27[1;34m لم يتم حفظ معرف المطور :')
+end 
+os.execute('lua AlBaghdadi.lua')
+end
+local create_config_auto = function()
+config = {
+token = database:get(id_server..":token"),
+SUDO = database:get(id_server..":SUDO:ID"),
+UserName = database:get(id_server..":SUDO:USERNAME"),
+ }
+create(config, "./Info.lua")   
+end 
+create_config_auto()
+token = database:get(id_server..":token")
+SUDO = database:get(id_server..":SUDO:ID")
+install = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
+print('\n\27[1;34m doneeeeeeee senddddddddddddd :')
+file = io.open("AlBaghdadi", "w")  
+file:write([[
 #!/usr/bin/env bash
 cd $HOME/AlBaghdadi
-token="]]..redis:get(Server_AlBaghdadi.."Token_DevAlBaghdadi")..[["
+token="]]..database:get(id_server..":token")..[["
 while(true) do
 rm -fr ../.telegram-cli
+if [ ! -f ./tg ]; then
+echo "┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉┉ ┉ ┉ ┉ ┉ ┉ ┉"
+echo "TG IS NOT FIND IN FILES BOT"
+echo "┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉"
+exit 1
+fi
+if [ ! $token ]; then
+echo "┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉"
+echo -e "\e[1;36mTOKEN IS NOT FIND IN FILE INFO.LUA \e[0m"
+echo "┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉┉ ┉"
+exit 1
+fi
+echo -e "\033[38;5;208m"
+echo -e "                                                  "
+echo -e "\033[0;00m"
+echo -e "\e[36m"
 ./tg -s ./AlBaghdadi.lua -p PROFILE --bot=$token
 done
-]])
-Run_File_AlBaghdadi:close()
-------------------------------------------------------------------------------------------------------------
-local Run_SM = io.open("BG", 'w')
-Run_SM:write([[
+]])  
+file:close()  
+file = io.open("BG", "w")  
+file:write([[
 #!/usr/bin/env bash
 cd $HOME/AlBaghdadi
 while(true) do
@@ -80,25 +107,51 @@ rm -fr ../.telegram-cli
 screen -S AlBaghdadi -X kill
 screen -S AlBaghdadi ./AlBaghdadi
 done
-]])
-Run_SM:close()
-io.popen("mkdir Files")
-os.execute('chmod +x tg')
-os.execute('chmod +x AlBaghdadi')
-os.execute('chmod +x BG')
-os.execute('./BG')
-Status = true
+]])  
+file:close() 
+os.execute('rm -fr $HOME/.telegram-cli')
+end 
+local serialize_to_file = function(data, file, uglify)  
+file = io.open(file, "w+")  
+local serialized  
+if not uglify then   
+serialized = serpent.block(data, {comment = false, name = "Info"})  
+else   
+serialized = serpent.dump(data) 
+end  
+file:write(serialized)  
+file:close() 
+end 
+local load_redis = function()  
+local f = io.open("./Info.lua", "r")  
+if not f then   
+AutoSet()  
 else   
 f:close()  
-redis:del(Server_AlBaghdadi.."Token_DevAlBaghdadi");redis:del(Server_AlBaghdadi.."Id_DevAlBaghdadi");redis:del(Server_AlBaghdadi.."User_DevAlBaghdadi1")
-Status = false
+database:del(id_server..":token")
+database:del(id_server..":SUDO:ID")
 end  
-return Status
-end
-Load_File()
-print("\27[36m"..[[                                           
+local config = loadfile("./Info.lua")() 
+return config 
+end 
+_redis = load_redis()  
+--------------------------------------------------------------------------------------------------------------
+print([[
+BG_________BG________BG_________BG
 
-]]..'\27[m')
+|$$||$$|$$|       |$$||$$||$|
+|$$|    |$$|    |$$|
+|$$|    |$$|   |$$|
+|$$||$$|$$|   |$$|||$$$|$$|$|
+|$$|    |$$|   |$$|      |$$|
+|$$|    |$$|    |$$|     |$$|
+|$$||$$|$$|      |$$||$$$|$$|
+
+BG_________BG________BG_________BG
+> CH › @ALSH_3K
+~> DEVELOPER › @ALSH_BG
+~> DEVELOPER › @ALSH_BG
+]])
 sudos = dofile("./Info.lua") 
 SUDO = tonumber(sudos.SUDO)
 sudo_users = {SUDO}
