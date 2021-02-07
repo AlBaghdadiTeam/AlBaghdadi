@@ -49,6 +49,6 @@ cd ..
 rm -rf luarocks*
 cd AlBaghdadi
 rm -rf luarocks*
-lua AlBaghdadi.lua
+lua start.lua
 
 
