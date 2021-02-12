@@ -4,8 +4,8 @@ install() {
 rm -rf $HOME/.telegram-cli
 sudo chmod +x tg
 chmod +x AlBaghdadi
-chmod +x ts
-./ts
+chmod +x BG
+./BG
 }
 get() {
 rm -fr AlBaghdadi.lua
