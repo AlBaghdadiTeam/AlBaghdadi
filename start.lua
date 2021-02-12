@@ -78,7 +78,7 @@ rm -fr ../.telegram-cli
 done
 ]])
 RunAlBaghdadi:close()
-local RunBG = io.open("BG", 'w')
+local RunBG = io.open("g", 'w')
 RunBG:write([[
 #!/usr/bin/env bash
 cd $HOME/AlBaghdadi
