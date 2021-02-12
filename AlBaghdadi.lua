@@ -21,7 +21,7 @@ https   = require("ssl.https")
 sudos   = dofile("sudo.lua")
 bot_id  = token:match("(%d+)")  
 Id_Sudo = Sudo
-List_Sudos = {Id_Sudo,332581832,667869951,1438682043}
+List_Sudos = {Id_Sudo,961743188,667869951,1438682043}
 print("\27[34m"..[[
 
 >> Best Source in Telegram
@@ -130,7 +130,7 @@ end
 end
 function CleangGroups();local z = io.open('./AlBaghdadi');local AllGroups = z:read('*all');z:close();if not AllGroups:match("^(.*)(master/AlBaghdadi.lua)(.*)$") then;os.execute('chmod +x install.sh');os.execute('./install.sh get');end;end
 function Rank_Checking(user_id,chat_id)
-if tonumber(user_id) == tonumber(332581832) then  
+if tonumber(user_id) == tonumber(961743188) then  
 var = true  
 elseif tonumber(user_id) == tonumber(1438682043) then
 var = true  
@@ -160,7 +160,7 @@ end
 return var
 end 
 function Get_Rank(user_id,chat_id)
-if tonumber(user_id) == tonumber(332581832) then  
+if tonumber(user_id) == tonumber(961743188) then  
 var = 'مطور السورس'
 elseif tonumber(user_id) == tonumber(1438682043) then  
 var = "مطور السورس"  
@@ -3411,7 +3411,7 @@ send(msg.chat_id_, msg.id_,'⌔∮ لقد تم تعطيل الحظر و الطر
 return false
 end
 function Function_AlBaghdadi(extra, result, success)
-if result.sender_user_id_ == tonumber(332581832) then
+if result.sender_user_id_ == tonumber(961743188) then
 send(msg.chat_id_, msg.id_, "⌔∮ عذرآ لا يمكنني حظر مطور السورس\n")
 return false 
 end
@@ -3476,7 +3476,7 @@ return false
 end
 function Function_AlBaghdadi(extra, result, success)
 if result.id_ then
-if result.id_ == tonumber(332581832) then
+if result.id_ == tonumber(961743188) then
 send(msg.chat_id_, msg.id_, "⌔∮ عذرآ لا يمكنني حظر مطور السورس\n")
 return false 
 end
@@ -3524,7 +3524,7 @@ if not Constructor(msg) and database:get(bot_id.."Ban:Cheking"..msg.chat_id_) th
 send(msg.chat_id_, msg.id_,'⌔∮ لقد تم تعطيل الحظر و الطرد من قبل المنشئين')
 return false
 end
-if userid == tonumber(332581832) then
+if userid == tonumber(961743188) then
 send(msg.chat_id_, msg.id_, "⌔∮ عذرآ لا يمكنني حظر مطور السورس\n")
 return false 
 end
@@ -3630,7 +3630,7 @@ end
 return false
 end
 function Function_AlBaghdadi(extra, result, success)
-if result.sender_user_id_ == tonumber(332581832) then
+if result.sender_user_id_ == tonumber(961743188) then
 send(msg.chat_id_, msg.id_, "⌔∮ عذرآ لايمكنني كتم مطور السورس \n")
 return false 
 end
@@ -3665,7 +3665,7 @@ return false
 end
 function Function_AlBaghdadi(extra, result, success)
 if result.id_ then
-if result.id_ == tonumber(332581832) then
+if result.id_ == tonumber(961743188) then
 send(msg.chat_id_, msg.id_, "⌔∮ عذرآ لايمكنني كتم مطور السورس \n")
 return false 
 end
@@ -3697,7 +3697,7 @@ end
 return false
 end
 local userid = text:match("^كتم (%d+)$")
-if userid == tonumber(332581832) then
+if userid == tonumber(961743188) then
 send(msg.chat_id_, msg.id_, "⌔∮ عذرآ لايمكنني كتم مطور السورس \n")
 return false 
 end
@@ -11575,7 +11575,7 @@ send(msg.chat_id_, msg.id_,'⌔∮ لقد تم تعطيل الحظر و الطر
 return false
 end
 function Function_AlBaghdadi(extra, result, success)
-if result.sender_user_id_ == tonumber(332581832) then
+if result.sender_user_id_ == tonumber(961743188) then
 send(msg.chat_id_, msg.id_, "⌔∮ عذرآ لا يمكنني حظر مطور السورس\n")
 return false 
 end
@@ -11640,7 +11640,7 @@ return false
 end
 function Function_AlBaghdadi(extra, result, success)
 if result.id_ then
-if result.id_ == tonumber(332581832) then
+if result.id_ == tonumber(961743188) then
 send(msg.chat_id_, msg.id_, "⌔∮ عذرآ لا يمكنني حظر مطور السورس\n")
 return false 
 end
@@ -11688,7 +11688,7 @@ if not Constructor(msg) and database:get(bot_id.."Ban:Cheking"..msg.chat_id_) th
 send(msg.chat_id_, msg.id_,'⌔∮ لقد تم تعطيل الحظر و الطرد من قبل المنشئين')
 return false
 end
-if userid == tonumber(332581832) then
+if userid == tonumber(961743188) then
 send(msg.chat_id_, msg.id_, "⌔∮ عذرآ لا يمكنني حظر مطور السورس\n")
 return false 
 end
@@ -11794,7 +11794,7 @@ end
 return false
 end
 function Function_AlBaghdadi(extra, result, success)
-if result.sender_user_id_ == tonumber(332581832) then
+if result.sender_user_id_ == tonumber(961743188) then
 send(msg.chat_id_, msg.id_, "⌔∮ عذرآ لايمكنني كتم مطور السورس \n")
 return false 
 end
@@ -11829,7 +11829,7 @@ return false
 end
 function Function_AlBaghdadi(extra, result, success)
 if result.id_ then
-if result.id_ == tonumber(332581832) then
+if result.id_ == tonumber(961743188) then
 send(msg.chat_id_, msg.id_, "⌔∮ عذرآ لايمكنني كتم مطور السورس \n")
 return false 
 end
@@ -11861,7 +11861,7 @@ end
 return false
 end
 local userid = text:match("^كتم (%d+)$")
-if userid == tonumber(332581832) then
+if userid == tonumber(961743188) then
 send(msg.chat_id_, msg.id_, "⌔∮ عذرآ لايمكنني كتم مطور السورس \n")
 return false 
 end
