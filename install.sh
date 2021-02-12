@@ -10,7 +10,7 @@ chmod +x BG
 get() {
 rm -fr AlBaghdadi.lua
 rm -fr sudo.lua
-wget "https://raw.githubusercontent.com/AlBaghdadiTeam/AlBaghdadi/main/AlBaghdadi.lua"
+wget "https://raw.githubusercontent.com/AlBaghdadiTele/AlBaghdadi/master/AlBaghdadi.lua"
 lua start.lua
 }
 installall(){
