@@ -59,7 +59,6 @@ end
 else
 io.write('\n\27[1;31mThe UserName was not Saved\n\27[0;39;49m')
 end 
-end
 redis:mset(
 AlBaghdadi..":VERSION","9",
 AlBaghdadi..":SUDO_ID:",redis:get(Server_S.."Id_S"),
