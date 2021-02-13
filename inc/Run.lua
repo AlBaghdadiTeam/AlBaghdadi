@@ -140,7 +140,7 @@ print('\27[31m! Error File Not "Run inc/locks.lua" !\n\27[39m')
 print(tostring(io.popen("lua inc/locks.lua"):read('*all')))
 end
 
-print('\27[0;33m>>'..[
+print('\27[0;33m>>'..[[
 -------------------------------------------------------------------
 
 ]]..'\027[0;32m'
